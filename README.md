@@ -119,7 +119,7 @@ El **espacio de usuario** suele estar provisto por las **coreutils de GNU**, con
 
 # Capítulo 2: Debian – El Sistema Operativo Universal  
 
-<img width="275" height="140" alt="Image" src="https://github.com/user-attachments/assets/63c558bc-f3bd-4550-b556-ab8f805cc19f" />
+<img width="650" height="300" alt="Image" src="https://github.com/user-attachments/assets/2169d1dc-5839-4743-8855-811e955d5d22" />
 
 ## 2.1. Historia y Orígenes  
 
@@ -174,7 +174,8 @@ La **estabilidad y seguridad** convierten a Debian en una de las opciones predil
 ---
 # Capítulo 3: Ubuntu – Linux para Seres Humanos  
 
-<img width="378" height="133" alt="Image" src="https://github.com/user-attachments/assets/8c56ecda-bcbd-493e-8ca7-f50befcfd26c" />
+<img width="650" height="300" alt="Image" src="https://github.com/user-attachments/assets/8c56ecda-bcbd-493e-8ca7-f50befcfd26c" />
+
 
 ## 3.1. Historia y Relación con Debian  
 
@@ -239,7 +240,8 @@ Ubuntu se ha consolidado como una de las distribuciones más influyentes gracias
 ---
 # Capítulo 4: Linux Mint – De la Libertad Vino la Elegancia  
 
-<img width="3840" height="2160" alt="Image" src="https://github.com/user-attachments/assets/60974ccb-2974-4738-b403-e2ec6cc80a91" />
+
+<img width="650" height="300" alt="Image" src="https://github.com/user-attachments/assets/60974ccb-2974-4738-b403-e2ec6cc80a91" />
 
 ## 4.1. Historia y Relación con Ubuntu  
 
@@ -303,7 +305,7 @@ En resumen, Linux Mint ofrece un balance perfecto entre **simplicidad, estabilid
 ---
 # Capítulo 5: Kali Linux – La Navaja Suiza de la Ciberseguridad  
 
-<img width="1920" height="1080" alt="Image" src="https://github.com/user-attachments/assets/57ced005-36f6-4627-8f92-9ce82ed02c18" />
+<img width="650" height="300" alt="Image" src="https://github.com/user-attachments/assets/57ced005-36f6-4627-8f92-9ce82ed02c18" />
 
 ## 5.2. ¿Qué es Kali Linux? Filosofía y Enfoque  
 
@@ -381,7 +383,8 @@ Este contraste demuestra cómo una sola base técnica (Debian) puede sostener un
 ---
 # Capítulo 6: Fedora – La Vanguardia de la Innovación  
 
-![Image](https://github.com/user-attachments/assets/26da5a19-7328-459e-bf75-2afe940e2b73)
+
+<img width="650" height="300" alt="Image" src="https://github.com/user-attachments/assets/26da5a19-7328-459e-bf75-2afe940e2b73" />
 
 ## 6.1. Historia y Relación con Red Hat  
 
@@ -558,7 +561,8 @@ Ambos continúan el legado de CentOS como **alternativas gratuitas, comunitarias
 
 # Capítulo 8: Rocky Linux – Reconstruyendo la Empresa Comunitaria  
 
-![Image](https://github.com/user-attachments/assets/f2e58761-04e9-4c4a-988b-bc868f43b05d)
+
+<img width="650" height="300" alt="Image" src="https://github.com/user-attachments/assets/f2e58761-04e9-4c4a-988b-bc868f43b05d" />
 
 ## 8.1. Historia y Génesis  
 
@@ -641,7 +645,8 @@ Sin embargo, Rocky no es el único heredero del trono dejado por CentOS. Casi en
 
 # Capítulo 9: AlmaLinux - El Alma de la Comunidad Empresarial
 
-<img width="389" height="129" alt="Image" src="https://github.com/user-attachments/assets/69e328d7-22f4-412f-8818-033f7afd58e1" />
+<img width="650" height="300" alt="Image" src="https://github.com/user-attachments/assets/69e328d7-22f4-412f-8818-033f7afd58e1" />
+
 
 ## 9.1 Historia y Orígenes  
 
@@ -699,7 +704,7 @@ El éxito de ambos muestra que, en el ecosistema del código abierto, **la misi�
 ---
 # Capítulo 10: Arch Linux - Un Sistema Simple, Moderno y Pragmático  
 
-<img width="390" height="129" alt="Image" src="https://github.com/user-attachments/assets/2e8d95a5-3816-4391-95ff-5b08aad7e98f" />
+<img width="650" height="300" alt="Image" src="https://github.com/user-attachments/assets/2e8d95a5-3816-4391-95ff-5b08aad7e98f" />
 
 ## 10.1 Historia y Orígenes  
 
@@ -764,7 +769,7 @@ Además, su **comunidad activa** en foros, canales de IRC y redes sociales ofrec
 ---
 # Capítulo 11: Manjaro - Arch Linux Hecho Accesible  
 
-![Image](https://github.com/user-attachments/assets/ee37e7fd-7cc3-4edd-87d8-d403e5777b59)
+<img width="650" height="300" alt="Image" src="https://github.com/user-attachments/assets/ee37e7fd-7cc3-4edd-87d8-d403e5777b59" />
 
 ## 11.1 Historia y Relación con Arch  
 
@@ -825,7 +830,9 @@ En resumen, **Manjaro democratiza Arch Linux**, ofreciendo lo mejor de su poder 
 ---
 # Capítulo 12: Garuda Linux - Rendimiento y Estética para el Gaming
 
-![Image](https://github.com/user-attachments/assets/ee7bc64a-97ce-49b8-b073-a3bffd8390a3)
+<img width="650" height="300" alt="Image" src="https://github.com/user-attachments/assets/ee7bc64a-97ce-49b8-b073-a3bffd8390a3" />
+
+
 
 ## 12.1. Historia y Relación con Arch
 
@@ -884,7 +891,8 @@ Ofrece ediciones oficiales con entornos como **KDE Dr460nized, XFCE, GNOME, i3, 
 
 # Capítulo 13: Alpine Linux - Pequeño, Simple y Seguro
 
-![Image](https://github.com/user-attachments/assets/e1d1c972-b008-49ef-bcea-db298e0325a2)
+
+<img width="650" height="300" alt="Image" src="https://github.com/user-attachments/assets/e1d1c972-b008-49ef-bcea-db298e0325a2" />
 
 ## 13.1. Historia y Orígenes
 
