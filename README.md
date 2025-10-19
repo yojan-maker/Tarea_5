@@ -1123,3 +1123,225 @@ El futuro de la computación seguirá siendo construido sobre esta base **divers
 
 ---
 
+# 2- QEMU
+
+![Image](https://github.com/user-attachments/assets/b648535e-3ea8-4608-8bd6-8618fb54094a)
+
+# QEMU: Emulador y Virtualizador 🖥️
+
+## ¿Qué es QEMU?
+
+QEMU es un monitor de máquinas virtuales (VMM) y emulador de código abierto. Puede funcionar en dos modos principales:
+
+1.  **Emulación de Sistema Completo (Full System Emulation):** En este modo, QEMU emula un sistema informático completo, incluyendo un procesador (CPU) y diversos periféricos (disco, red, GPU, etc.). Esto permite ejecutar un sistema operativo compilado para una arquitectura (ej. ARM) en una máquina con una arquitectura totalmente diferente (ej. x86_64).
+
+2.  **Virtualización Asistida por Hardware:** Cuando se utiliza en una máquina cuya CPU (anfitrión) tiene la misma arquitectura que el sistema que se quiere ejecutar (invitado) (ej. x86_64 en x86_64), QEMU puede usar las extensiones de virtualización del hardware (como Intel VT-x o AMD-V). En Linux, esto se hace a través del módulo **KVM** (Kernel-based Virtual Machine). El resultado es un rendimiento casi nativo, ya que el código del invitado se ejecuta directamente en la CPU del anfitrión.
+
+---
+
+## Método 1: Uso por Línea de Comandos (CLI) ⌨️
+
+La verdadera "interfaz" de QEMU es la línea de comandos. Este método nos da el control total sobre cada parámetro de la máquina virtual.
+
+### 1. Creación de un Disco Duro Virtual
+
+Antes de instalar un SO, necesitamos un "disco". QEMU usa la herramienta `qemu-img` para esto.
+
+**Comando:**
+```bash
+# Crea un archivo de imagen de disco llamado 'mi_disco.qcow2'
+# El formato 'qcow2' (QEMU Copy-On-Write 2) permite que el disco crezca
+# dinámicamente y soporta snapshots.
+# '10G' es el tamaño máximo que podrá alcanzar.
+
+qemu-img create -f qcow2 mi_disco.qcow2 10G
+```
+Resultado (Salida en terminal):
+```bash
+Formatting 'mi_disco.qcow2', fmt=qcow2 cluster_size=65536 extended_l2=off refcount_bits=16 lazy_refcounts=off size=10737418240
+```
+2. Iniciar una Máquina Virtual (Instalación)
+
+Este es el comando principal: 
+```bash
+qemu-system-x86_64. 
+```
+Este comando le dice a QEMU que inicie una VM, conecte el disco que creamos y arranque desde un CD-ROM (ISO) de instalación.
+```bash
+# Lanza una VM x86_64
+
+qemu-system-x86_64 \
+    -m 2G \                     # Asigna 2 GB de memoria RAM
+    -hda mi_disco.qcow2 \       # Conecta nuestro disco como el primer disco duro
+    -cdrom ubuntu-server.iso \  # Inserta la ISO de instalación como un CD-ROM
+    -boot d                     # Le dice a la BIOS que arranque (boot) desde el CD (d) \
+    -enable-kvm                 # ¡IMPORTANTE! Habilita la aceleración KVM
+```
+3. El Resultado: La Ventana de QEMU
+Cuando ejecutas el comando anterior, QEMU abrirá una nueva ventana. Esta ventana es el "monitor" de tu máquina virtual.
+
+## Método 2: Alternativa Gráfica con Virt-Manager 🖼️
+
+![Image](https://github.com/user-attachments/assets/917d4818-fa6e-47f1-8cb1-12e430ea4a63)
+
+Si bien la línea de comandos es potente, puede ser compleja para el día a día. `virt-manager` (Virtual Machine Manager) es una interfaz gráfica de usuario (GUI) que simplifica enormemente la creación y gestión de máquinas virtuales.
+
+Por debajo, **sigue utilizando QEMU/KVM** y `libvirt` (la biblioteca de gestión), pero nos abstrae de los comandos complejos.
+
+
+Al abrir `virt-manager`, ves la consola principal que lista tus máquinas virtuales (definidas en la conexión `QEMU/KVM`) y su estado (corriendo, detenida).
+
+
+En lugar de un comando largo, un asistente gráfico te guía paso a paso para crear una nueva VM.
+
+**Paso 1: Seleccionar la ISO de instalación.**
+
+**Paso 2: Asignar recursos (RAM y CPUs).**
+
+
+Una vez creada la VM, `virt-manager` ofrece un panel detallado para ver y modificar el hardware virtual: añadir discos, tarjetas de red, dispositivos USB, cambiar el orden de arranque, etc. Esto es mucho más intuitivo que añadir flags `-device` en la línea de comandos.
+
+Al iniciar la VM desde `virt-manager`, se abre una ventana de consola. Esta ventana es, en efecto, la misma que QEMU abriría, pero está integrada dentro de la interfaz de `virt-manager`.
+
+---
+
+# 3. Analisis de Red.
+
+# 🔎 Análisis de red con `nmap` — puertos, servicios y extracción de información
+
+> **Aviso legal y ético:** Solo realiza escaneos en redes y hosts que **poseas** o para los que **tengas permiso explícito**. El escaneo no autorizado puede ser ilegal y es intrusivo.
+
+---
+
+## 🧭 ¿Qué es `nmap` y para qué sirve en un análisis de red?
+
+`nmap` (Network Mapper) es una herramienta de código abierto para **descubrimiento de hosts y escaneo de puertos**. Además de identificar qué puertos están abiertos en un equipo, `nmap` puede:
+- detectar qué **servicios** (y versiones) escuchan en esos puertos,
+- intentar **detectar el sistema operativo (OS fingerprinting)**,
+- ejecutar **scripts** (NSE) para recopilar información adicional o detectar configuraciones/vulnerabilidades,
+- exportar resultados en varios formatos para informes.
+
+`nmap` es la piedra angular en auditorías de red, inventarios de servicios, y diagnóstico de conectividad.
+
+---
+## 🧰 Instalación (ejemplo en Debian/Ubuntu)
+
+```bash
+sudo apt update
+sudo apt install nmap
+nmap --version
+```
+## 🧭 Flujo típico de análisis con nmap (pasos prácticos)
+
+- Descubrimiento de hosts — saber quién está vivo en la red.
+- Escaneo de puertos — saber qué puertos están abiertos.
+- Detección de servicios/versiones — identificar qué servicio y versión corre en esos puertos.
+- Detección del sistema operativo — intentar inferir SO y arquitectura.
+- Ejecución de NSE scripts — recoger info extra (vulnerabilidades, configuración, usuarios, etc.).
+- Guardar resultados — generar archivos para informes (-oA, -oX, -oN).
+- Correlacionar con logs, ss, lsof, htop o glances.
+
+1) Descubrimiento (ping scan)
+```bash
+sudo nmap -sn 192.168.1.0/24
+```
+solo detecta hosts "vivos" (no escanea puertos).
+Útil para inventario inicial
+
+2) Escaneo rápido de puertos comunes
+```bash
+nmap -F TARGET
+```
+-F usa la base de datos de puertos "fast" (pocos puertos comunes) — rápido, buena primera aproximación.
+
+3) Escaneo completo de puertos TCP (1–65535)
+```bash
+sudo nmap -p- TARGET
+```
+-p- escanea todos los puertos TCP. Requiere más tiempo.
+
+4) Escaneo SYN (stealth) y detección de versión
+```bash
+sudo nmap -sS -sV -T4 TARGET
+```
+-sS SYN scan (requiere privilegios, más sigiloso que -sT).
+-sV intenta identificar servicios y versiones.
+-T4 ajusta la velocidad (más rápido, más ruidoso).
+
+5) Detección de sistema operativo y traceroute
+```bash
+sudo nmap -O --traceroute TARGET
+```
+-O intenta fingerprint del sistema operativo.
+--traceroute rastrea la ruta hasta el host.
+
+6) Escaneo UDP (necesario para servicios no-TCP, ej. DNS, SNMP)
+```bash
+sudo nmap -sU -p 53,161 TARGET
+```
+-sU escanea puertos UDP; lento y con falsos negativos frecuentes.
+
+7) Escaneo agresivo para auditoría completa
+```bash
+sudo nmap -A -T4 TARGET
+```
+-A agrupa detección de OS, servicios, scripts NSE “default”, y traceroute.
+Muy informativo, pero ruidoso.
+
+8) Guardar resultados en varios formatos
+```bash
+sudo nmap -A -oA resultados/target_scan TARGET
+```
+-oA genera target_scan.nmap (raw), target_scan.xml (XML), y target_scan.gnmap (grepable).
+
+### 🧾 Ejemplo de un escaneo (interpretación)
+Ejecutamos:
+```bash
+sudo nmap -sS -sV -O -p 22,80,443,3306 -T4 --script=vuln 192.168.1.100
+```
+Salida (ejemplo acotado):
+```bash
+PORT     STATE SERVICE  VERSION
+22/tcp   open  ssh      OpenSSH 8.2p1 Ubuntu (protocol 2.0)
+80/tcp   open  http     Apache httpd 2.4.41 ((Ubuntu))
+443/tcp  open  ssl/http Apache httpd 2.4.41 ((Ubuntu)) OpenSSL 1.1.1f
+3306/tcp open  mysql    MySQL 5.7.33
+
+OS details: Linux 4.x (Ubuntu)
+
+NSE: vulns
+| ssl-heartbleed: VULNERABLE
+|   Description: ...
+|_  CVE-2014-0160
+```
+Cómo interpretarlo?
+  -  Puertos abiertos (STATE open): servicios escuchando (SSH, HTTP, HTTPS, MySQL).
+  -  VERSION: nmap intentó hablar con el servicio y leer su banner/respuesta para identificar la versión. Ej.: OpenSSH 8.2p1, Apache 2.4.41.
+   - OS details: huella del kernel indica Linux, posiblemente Ubuntu. Esto ayuda a modelar recompensas de explotación o compatibilidad.
+   - NSE output (ssl-heartbleed): un script detectó una vulnerabilidad conocida (ejemplo). Requiere verificación manual.
+   - 
+### 🧠 ¿Qué información puedes capturar con nmap?
+
+   - Puertos abiertos / cerrados / filtrados — ¿hay un firewall?
+   - Servicios y versiones — banner grabbing y fingerprinting activo.
+   - Sistema operativo probable por fingerprints TCP/IP.
+   - Protocolos no-TCP (UDP) — DNS, SNMP, NTP, etc.
+   - Información de configuración mediante NSE (ej.: usuarios anónimos de FTP, SMB shares, SSL/TLS weak ciphers).
+   - Servicios expuestos en puertos inusuales — servicios mal configurados que usan puertos no estándar.
+   - Tiempo de respuesta y latencias — ayudan a detectar congestión o filtros.
+
+### ⚙️ Consejos prácticos y consideraciones técnicas
+
+   - Privilegios: muchos escaneos (-sS, -sU, -O) requieren permisos de root.
+   - Velocidad y evasión: usa -T0..-T5 para ajustar velocidad; más rápido = más ruido.
+   - Firewalls / IDS: hosts con firewalls pueden marcar puertos como filtered. Un IDS puede generar alertas.
+   - UDP es lento y poco fiable: combinación de tiempo de espera y necesidad de pruebas adicionales para confirmar.
+   - Evita escaneos intrusivos en producción: scripts vuln o exploit pueden romper servicios.
+   - Correlaciona hallazgos: si nmap muestra puerto 3306 abierto, verifica en el host con ss -tulpen | grep 3306 y con htop/ps para ver el proceso que lo expone.
+
+### 🔚 Conclusión
+
+   - nmap es una herramienta flexible y poderosa para descubrir servicios, mapear puertos, detectar versiones y ejecutar scripts que extraen información adicional. Para un análisis responsable:
+   - Prioriza la autorización y la no intrusión en entornos productivos.
+   - Combina nmap con herramientas de sistema (ss, lsof, journalctl, htop) y con auditorías (lynis) para obtener un panorama completo.
+   - Guarda y estructura los resultados para informes reproducibles y acciones de mitigación.
