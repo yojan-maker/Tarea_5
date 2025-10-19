@@ -1345,3 +1345,40 @@ Cómo interpretarlo?
    - Prioriza la autorización y la no intrusión en entornos productivos.
    - Combina nmap con herramientas de sistema (ss, lsof, journalctl, htop) y con auditorías (lynis) para obtener un panorama completo.
    - Guarda y estructura los resultados para informes reproducibles y acciones de mitigación.
+
+---
+
+# 📚 Referencias Bibliográficas  
+
+- Debian
+Arsys. (n.d.). Distribución Linux Debian. Arsys. https://www.arsys.es/blog/distribucion-linux-debian
+- Arch
+Arch Linux Wiki. (n.d.). Arch Linux (Español). Arch Linux. https://wiki.archlinux.org/title/Arch_Linux_(Espa%C3%B1ol)
+- Rocky Linux
+Budhajeewa. (n.d.). Rocky Linux: A deep dive into its history, features and role in open source. Medium. https://medium.com/@budhajeewa/rocky-linux-a-deep-dive-into-its-history-features-and-role-in-open-source-siliconscoop-475fcd18e99b
+- Garuda Linux
+NCSU Linux Users Group. (2021). Garuda Linux [presentación]. https://lug.ncsu.edu/presentations/2021-04-27-garuda-linux.pdf
+- Fedora
+ArtistCode. (n.d.). Fedora. ArtistCode. https://www.artistcode.net/post/fedora
+- Manjaro
+CentLinux. (n.d.). Manjaro Linux. CentLinux. https://centlinux.com/manjaro-linux/
+- CentOS
+Red Hat. (n.d.). What is CentOS? Red Hat. https://www.redhat.com/es/topics/linux/what-is-centos
+- Kali Linux
+Kali Linux (Offensive Security). (n.d.). Kali Linux — History. Kali.org. https://www.kali.org/docs/introduction/kali-linux-history/
+- Linux Mint
+Linux Mint. (n.d.). About Linux Mint. Linux Mint. https://linuxmint.com/about.php
+- Ubuntu
+Ubuntu. (n.d.). About Ubuntu. Canonical / Ubuntu. https://ubuntu.com/about
+- Alpine
+l3r. (n.d.). Alpine Linux. https://fl3r.altervista.org/alpine-linux/
+- AlmaLinux
+UbuntuMint. (n.d.). History of AlmaLinux. UbuntuMint. https://www.ubuntumint.com/history-of-almalinux/
+- QEMU (oficial)
+QEMU Project. (n.d.). QEMU system emulation — Introduction. QEMU. https://www.qemu.org/docs/master/system/introduction.html
+- QEMU (artículo adicional)
+Carceller, V. (n.d.). QEMU (artículo). El Puig / Xeill. https://elpuig.xeill.net/Members/vcarceler/articulos/qemu
+- Nmap (oficial)
+Nmap Project. (n.d.). Nmap — Free Security Scanner, Port Scanner, & Network Exploration Tool. Nmap. https://nmap.org/
+- Nmap (tutorial)
+FreeCodeCamp. (n.d.). What is Nmap and how to use it: a tutorial for the greatest scanning tool of all time. freeCodeCamp. https://www.freecodecamp.org/news/what-is-nmap-and-how-to-use-it-a-tutorial-for-the-greatest-scanning-tool-of-all-time/
